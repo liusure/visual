@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {PLACEHOLDER} from "../message/MessageEditor"
+import {PLACEHOLDER} from "./GoodsDescEditor"
 
 import "./GoodsDesc.less"
 

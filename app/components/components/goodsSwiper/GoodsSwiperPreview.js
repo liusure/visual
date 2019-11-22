@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {PLACEHOLDER} from "./SwiperEditor"
+import {PLACEHOLDER} from "./GoodsSwiperEditor"
 import {Swiper, Image} from "zent"
 import "./GoodsSwiper.less"
 

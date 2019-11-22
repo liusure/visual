@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
-import {PLACEHOLDER} from "./ImageListEditor"
+import {PLACEHOLDER} from "./ColumnImageListEditor"
 
 import "./ColumnImageList.less"
 
-export default class ColumnImageListPreview extends PureComponent {
+export default class ColumnImagePreview extends PureComponent {
   render() {
     const {value} = this.props;
     let {

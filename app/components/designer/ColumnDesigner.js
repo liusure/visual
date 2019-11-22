@@ -6,8 +6,12 @@ import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
   SearchPreview,
-  GoodsDesc,
-  GoodsDescPreview,
+  MessageEditor,
+  MessagePreview,
+  ColumnDescEditor,
+  ColumnDescPreview,
+  ColumnImageListEditor,
+  ColumnImagePreview,
   SwiperEditor,
   SwiperPreview,
   GoodsListEditor,
@@ -21,16 +25,15 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
-  type: "search",
+  type: "swiper",
   // 渲染预览部分的组件
-  preview: SearchPreview,
+  preview: ColumnDescPreview,
   // 渲染编辑部分的组件
-  editor: SearchEditor,
+  editor: ColumnDescEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
-  configurable: true,
-  editable: false,
+  editable: true,
   highlightWhenSelect: true,
   dragable: true,
   editorProps: () => {
@@ -38,11 +41,11 @@ const components = [{
   previewProps: () => {
   },
 }, {
-  type: "message",
+  type: "swiper",
   // 渲染预览部分的组件
-  preview: GoodsDescPreview,
+  preview: ColumnImagePreview,
   // 渲染编辑部分的组件
-  editor: GoodsDesc,
+  editor: ColumnImageListEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,

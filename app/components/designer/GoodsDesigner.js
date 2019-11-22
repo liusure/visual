@@ -6,8 +6,16 @@ import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
   SearchPreview,
-  GoodsDesc,
+  MessageEditor,
+  MessagePreview,
+  GoodsDescEditor,
   GoodsDescPreview,
+  GoodsRichTextEditor,
+  GoodsRichTextPreview,
+  GoodsTagsEditor,
+  GoodsTagsPreview,
+  GoodsSwiperEditor,
+  GoodsSwiperPreview,
   SwiperEditor,
   SwiperPreview,
   GoodsListEditor,
@@ -21,28 +29,11 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
-  type: "search",
+  type: "goods-swiper",
   // 渲染预览部分的组件
-  preview: SearchPreview,
+  preview: GoodsSwiperPreview,
   // 渲染编辑部分的组件
-  editor: SearchEditor,
-  appendable: true,
-  canDelete: true,
-  canInsert: true,
-  configurable: true,
-  editable: false,
-  highlightWhenSelect: true,
-  dragable: true,
-  editorProps: () => {
-  },
-  previewProps: () => {
-  },
-}, {
-  type: "message",
-  // 渲染预览部分的组件
-  preview: GoodsDescPreview,
-  // 渲染编辑部分的组件
-  editor: GoodsDesc,
+  editor: GoodsSwiperEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
@@ -54,11 +45,43 @@ const components = [{
   previewProps: () => {
   },
 }, {
-  type: "swiper",
+  type: "goods-tags",
   // 渲染预览部分的组件
-  preview: SwiperPreview,
+  preview: GoodsTagsPreview,
   // 渲染编辑部分的组件
-  editor: SwiperEditor,
+  editor: GoodsTagsEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-richText",
+  // 渲染预览部分的组件
+  preview: GoodsRichTextPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsRichTextEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-desc",
+  // 渲染预览部分的组件
+  preview: GoodsDescPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsDescEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,

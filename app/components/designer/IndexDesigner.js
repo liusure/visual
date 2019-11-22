@@ -6,7 +6,9 @@ import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
   SearchPreview,
-  GoodsDesc,
+  MessageEditor,
+  MessagePreview,
+  GoodsDescEditor,
   GoodsDescPreview,
   SwiperEditor,
   SwiperPreview,
@@ -40,9 +42,9 @@ const components = [{
 }, {
   type: "message",
   // 渲染预览部分的组件
-  preview: GoodsDescPreview,
+  preview: MessagePreview,
   // 渲染编辑部分的组件
-  editor: GoodsDesc,
+  editor: MessageEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
