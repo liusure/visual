@@ -1,0 +1,9 @@
+# generated files
+node_modules/
+dist/
+
+# dev
+*.idea
+*.iml
+*.MF
+#test
