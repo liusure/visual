@@ -3,7 +3,7 @@ import {Dialog} from 'zent';
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import EditorCard from '../../common/EditorCard';
 import ImageSelector from '../../common/ImageSelector';
-import {cloneDeep} from "lodash"
+import {contentType} from "@/constants";
 import "./GoodsSwiper.less"
 
 export const PLACEHOLDER = '请选择图片';
@@ -37,19 +37,8 @@ export default class GoodsSwiperEditor extends DesignEditor {
     const {value, showError, validation} = this.props;
 
     return (
-      <div className="rc-design-component-swiper-editor">
-        <div className="rc-design-editor-component-title">轮播图片</div>
-        <ControlGroup
-          label="图片:"
-          required
-          showError={showError || this.getMetaProperty('content', 'touched')}
-          error={validation.content}
-        ></ControlGroup>
-        <EditorCard
-          onCardClick={this.onCardAddClick.bind(this)}>
-          <p>添加图片</p>
-          <p>建议宽度750px</p>
-        </EditorCard>
+      <div className="rc-design-component-goods-swiper-editor">
+        <div className="rc-design-editor-component-title">此组件继承容器内容</div>
       </div>
     );
   }
@@ -59,7 +48,8 @@ export default class GoodsSwiperEditor extends DesignEditor {
 
   static getInitialValue(settings, globalConfig) {
     return {
-      items: []
+      contentType: contentType.INHERIT,
+      ctype: 14
     };
   }
 

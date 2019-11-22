@@ -20,6 +20,10 @@ import GoodsSwiperEditor from "./goodsSwiper/GoodsSwiperEditor"
 import GoodsSwiperPreview from "./goodsSwiper/GoodsSwiperPreview"
 import GoodsTagsEditor from "./goodsTags/GoodsTagsEditor"
 import GoodsTagsPreview from "./goodsTags/GoodsTagsPreview"
+import GoodsInfoEditor from "./goodsInfo/GoodsInfoEditor"
+import GoodsInfoPreview from "./goodsInfo/GoodsInfoPreview"
+import GoodsIndexEditor from "./goodsIndex/GoodsIndexEditor"
+import GoodsIndexPreview from "./goodsIndex/GoodsIndexPreview"
 
 
 export {
@@ -45,4 +49,8 @@ export {
   GoodsSwiperPreview,
   GoodsTagsEditor,
   GoodsTagsPreview,
+  GoodsInfoEditor,
+  GoodsInfoPreview,
+  GoodsIndexEditor,
+  GoodsIndexPreview
 }

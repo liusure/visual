@@ -108,7 +108,7 @@ const components = [{
 
 const {openDialog, closeDialog} = Dialog;
 
-export default class IndexDesigner extends PureComponent {
+export default class ColumnDesigner extends PureComponent {
 
   constructor() {
     super();

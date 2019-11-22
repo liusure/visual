@@ -12,7 +12,9 @@ export default class ColumnImageEditor extends DesignEditor {
 
   render() {
     return (
-      <div className="rc-design-component-column-image-list-editor"></div>
+      <div className="rc-design-component-column-image-list-editor">
+        <div className="rc-design-editor-component-title">此组件继承容器内容</div>
+      </div>
     );
   }
 

@@ -36,8 +36,7 @@ export default class MessageEditor extends DesignEditor {
   static designDescription = '公告';
 
   static getInitialValue(settings, globalConfig) {
-    console.log("getInitialValue")
-    return {
+return {
       content: '',
       scrollable: false
     };

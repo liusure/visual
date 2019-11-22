@@ -44,7 +44,7 @@ export default class NoticePreview extends PureComponent {
         console.log(template)
         this.setState({
           template,
-          activeId:template.ctype+""
+          activeId: template.ctype + ""
         })
       })
     }, 0)
@@ -71,13 +71,16 @@ export default class NoticePreview extends PureComponent {
     return (<Provider value={{templateId: this.state.params.templateId}}>
       <Tabs activeId={this.state.activeId} onChange={this.onTabChange} align="right">
         <TabPanel tab="首页模板" id="0">
-          {template ? (<IndexDesigner template={template} onSaved={this.onSaved.bind(this)}></IndexDesigner>) : null}
+          {template && template.ctype == 0 ? (
+            <IndexDesigner template={template} onSaved={this.onSaved.bind(this)}></IndexDesigner>) : null}
         </TabPanel>
         <TabPanel tab="专题模板" id="1">
-          {template ? (<ColumnDesigner template={template} onSaved={this.onSaved.bind(this)}></ColumnDesigner>) : null}
+          {template && template.ctype == 1 ? (
+            <ColumnDesigner template={template} onSaved={this.onSaved.bind(this)}></ColumnDesigner>) : null}
         </TabPanel>
         <TabPanel tab="商品模板" id="2">
-          {template ? (<GoodsDesigner template={template} onSaved={this.onSaved.bind(this)}></GoodsDesigner>) : null}
+          {template && template.ctype == 2 ? (
+            <GoodsDesigner template={template} onSaved={this.onSaved.bind(this)}></GoodsDesigner>) : null}
         </TabPanel>
       </Tabs>
     </Provider>);

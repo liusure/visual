@@ -181,8 +181,32 @@ let componentsConfig = {
       return null
     }
   },
-  '15': {desc: "基本信息",},
-  '16': {desc: "目录收缩",},
+  '15': {
+    type: "goods-info",
+    desc: "基本信息",
+    toComponent: (data) => {
+      return {
+        ...GoodsSwiperEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '16': {
+    type: "goods-index",
+    desc: "目录收缩",
+    toComponent: (data) => {
+      return {
+        ...GoodsSwiperEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
   '17': {desc: "简介收缩",},
   '18': {desc: "超屏滑动",},
   '19': {desc: "底部浮动",},

@@ -14,20 +14,7 @@ export default class GoodsTagsEditor extends DesignEditor {
 
     return (
       <div className="rc-design-component-message-editor">
-        <div className="rc-design-editor-component-title">消息滚动</div>
-        <ControlGroup
-          label="公告:"
-          required
-          showError={showError || this.getMetaProperty('content', 'touched')}
-          error={validation.content}
-        >
-          <Input
-            name="content"
-            placeholder={PLACEHOLDER}
-            value={content}
-            onChange={this.onInputChange}
-          />
-        </ControlGroup>
+        <div className="rc-design-editor-component-title">此组件继承容器内容</div>
       </div>
     );
   }
@@ -36,7 +23,6 @@ export default class GoodsTagsEditor extends DesignEditor {
   static designDescription = '商品标签';
 
   static getInitialValue(settings, globalConfig) {
-    console.log("getInitialValue")
     return {
       content: '',
       scrollable: false

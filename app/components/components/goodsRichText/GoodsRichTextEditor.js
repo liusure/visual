@@ -5,7 +5,7 @@ import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 
 import "./GoodsRichText.less"
 
-export const PLACEHOLDER = '请填写内容，如果过长，将会在手机上滚动显示';
+export const PLACEHOLDER = '此处显示富文本内容';
 
 export default class GoodsRichTextEditor extends DesignEditor {
 
@@ -13,21 +13,8 @@ export default class GoodsRichTextEditor extends DesignEditor {
     const {value: {content}, showError, validation} = this.props;
 
     return (
-      <div className="rc-design-component-message-editor">
-        <div className="rc-design-editor-component-title">消息滚动</div>
-        <ControlGroup
-          label="公告:"
-          required
-          showError={showError || this.getMetaProperty('content', 'touched')}
-          error={validation.content}
-        >
-          <Input
-            name="content"
-            placeholder={PLACEHOLDER}
-            value={content}
-            onChange={this.onInputChange}
-          />
-        </ControlGroup>
+      <div className="rc-design-component-goods-rich-text-editor">
+        <div className="rc-design-editor-component-title">此组件继承容器内容</div>
       </div>
     );
   }
@@ -36,7 +23,6 @@ export default class GoodsRichTextEditor extends DesignEditor {
   static designDescription = '商品富文本';
 
   static getInitialValue(settings, globalConfig) {
-    console.log("getInitialValue")
     return {
       content: '',
       scrollable: false
@@ -46,11 +32,6 @@ export default class GoodsRichTextEditor extends DesignEditor {
   static validate(value) {
     return new Promise(resolve => {
       const errors = {};
-      const {content} = value;
-      if (!content || !content.trim()) {
-        errors.content = '请填写公告内容';
-      }
-
       resolve(errors);
     });
   }

@@ -45,6 +45,7 @@ function templateToComponents(template) {
     let component = getComponent(area);
     console.log(area)
     console.log(component)
+    console.log("-----------")
     if (component && component.parameter.type) components.push(component.parameter);
   }
   return {

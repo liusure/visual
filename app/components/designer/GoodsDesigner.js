@@ -16,6 +16,10 @@ import {
   GoodsTagsPreview,
   GoodsSwiperEditor,
   GoodsSwiperPreview,
+  GoodsInfoEditor,
+  GoodsInfoPreview,
+  GoodsIndexEditor,
+  GoodsIndexPreview,
   SwiperEditor,
   SwiperPreview,
   GoodsListEditor,
@@ -29,11 +33,59 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
+  type: "swiper",
+  // 渲染预览部分的组件
+  preview: SwiperPreview,
+  // 渲染编辑部分的组件
+  editor: SwiperEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
   type: "goods-swiper",
   // 渲染预览部分的组件
   preview: GoodsSwiperPreview,
   // 渲染编辑部分的组件
   editor: GoodsSwiperEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-info",
+  // 渲染预览部分的组件
+  preview: GoodsInfoPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsInfoEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-index",
+  // 渲染预览部分的组件
+  preview: GoodsIndexPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsIndexEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
@@ -128,7 +180,7 @@ const components = [{
 
 const {openDialog, closeDialog} = Dialog;
 
-export default class IndexDesigner extends PureComponent {
+export default class GoodsDesigner extends PureComponent {
 
   constructor() {
     super();
