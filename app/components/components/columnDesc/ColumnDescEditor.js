@@ -1,5 +1,6 @@
 import React from 'react';
 import {Input} from 'zent';
+import {contentType} from '@/utils/utils';
 
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 
@@ -13,22 +14,7 @@ export default class ColumnDescEditor extends DesignEditor {
     const {value: {content}, showError, validation} = this.props;
 
     return (
-      <div className="rc-design-component-message-editor">
-        <div className="rc-design-editor-component-title">消息滚动</div>
-        <ControlGroup
-          label="公告:"
-          required
-          showError={showError || this.getMetaProperty('content', 'touched')}
-          error={validation.content}
-        >
-          <Input
-            name="content"
-            placeholder={PLACEHOLDER}
-            value={content}
-            onChange={this.onInputChange}
-          />
-        </ControlGroup>
-      </div>
+      <div className="rc-design-component-column-desc-editor"></div>
     );
   }
 
@@ -36,22 +22,15 @@ export default class ColumnDescEditor extends DesignEditor {
   static designDescription = '栏目介绍';
 
   static getInitialValue(settings, globalConfig) {
-    console.log("getInitialValue")
     return {
-      content: '',
-      scrollable: false
+      contentType: contentType.INHERIT,
+      ctype: 10
     };
   }
 
   static validate(value) {
     return new Promise(resolve => {
-      const errors = {};
-      const {content} = value;
-      if (!content || !content.trim()) {
-        errors.content = '请填写公告内容';
-      }
-
-      resolve(errors);
+      resolve();
     });
   }
 }

@@ -30,13 +30,9 @@ export function parseToTemplate(template) {
     let templateArea = new TemplateArea({...component});
     let config = componentsConfig[templateArea.ctype];
     templateArea.items = config.mapTemplateItem(component);
-    templateArea.orderId = template.components.length-index++;
+    templateArea.orderId = template.components.length - index++;
     templateAreas.push(templateArea);
   }
-  console.log({
-    ...template,
-    items: templateAreas
-  })
   return {
     ...template,
     items: templateAreas
@@ -47,6 +43,8 @@ function templateToComponents(template) {
   let components = [];
   for (let area of template.items) {
     let component = getComponent(area);
+    console.log(area)
+    console.log(component)
     if (component && component.parameter.type) components.push(component.parameter);
   }
   return {

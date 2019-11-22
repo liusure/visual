@@ -10,7 +10,7 @@ import {
   MessagePreview,
   ColumnDescEditor,
   ColumnDescPreview,
-  ColumnImageListEditor,
+  ColumnImageEditor,
   ColumnImagePreview,
   SwiperEditor,
   SwiperPreview,
@@ -25,7 +25,7 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
-  type: "swiper",
+  type: "column-desc",
   // 渲染预览部分的组件
   preview: ColumnDescPreview,
   // 渲染编辑部分的组件
@@ -41,11 +41,11 @@ const components = [{
   previewProps: () => {
   },
 }, {
-  type: "swiper",
+  type: "column-image",
   // 渲染预览部分的组件
   preview: ColumnImagePreview,
   // 渲染编辑部分的组件
-  editor: ColumnImageListEditor,
+  editor: ColumnImageEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,

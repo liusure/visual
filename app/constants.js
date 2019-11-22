@@ -5,7 +5,7 @@ import {
   GoodsListEditor,
   ImageListEditor,
   ColumnDescEditor,
-  ColumnImageListEditor,
+  ColumnImageEditor,
   GoodsDescEditor,
   GoodsRichTextEditor,
   GoodsSwiperEditor,
@@ -19,6 +19,7 @@ let componentsConfig = {
     toComponent: (data) => {
       return {
         ...SwiperEditor.getInitialValue(),
+        ...data,
         items: data.items.map(item => {
           return {
             ...item,
@@ -45,6 +46,7 @@ let componentsConfig = {
     toComponent: (data) => {
       return {
         ...ImageListEditor.getInitialValue(),
+        ...data,
         items: data.items.map(item => {
           return {
             ...item,
@@ -69,6 +71,7 @@ let componentsConfig = {
     toComponent: (data) => {
       return {
         ...GoodsListEditor.getInitialValue(),
+        ...data,
         items: data.items.map(item => {
           return {
             ...item,
@@ -93,6 +96,7 @@ let componentsConfig = {
     toComponent: (data) => {
       return {
         ...SearchEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -100,10 +104,12 @@ let componentsConfig = {
     }
   },
   '9': {
+    type: "column-image",
     desc: "栏目图片",
     toComponent: (data) => {
       return {
-        ...ColumnImageListEditor.getInitialValue(),
+        ...ColumnImageEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -111,10 +117,12 @@ let componentsConfig = {
     }
   },
   '10': {
+    type: "column-desc",
     desc: "栏目简介",
     toComponent: (data) => {
       return {
         ...ColumnDescEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -122,10 +130,12 @@ let componentsConfig = {
     }
   },
   '11': {
+    type: "goods-desc",
     desc: "商品简介",
     toComponent: (data) => {
       return {
         ...GoodsDescEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -133,10 +143,12 @@ let componentsConfig = {
     }
   },
   '12': {
+    type: "goods-tags",
     desc: "商品标签栏",
     toComponent: (data) => {
       return {
         ...GoodsTagsEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -144,10 +156,12 @@ let componentsConfig = {
     }
   },
   '13': {
+    type: "goods-richText",
     desc: "商品图文介绍",
     toComponent: (data) => {
       return {
         ...GoodsRichTextEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -155,10 +169,12 @@ let componentsConfig = {
     }
   },
   '14': {
+    type: "goods-swiper",
     desc: "商品图片轮播",
     toComponent: (data) => {
       return {
         ...GoodsSwiperEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
@@ -171,22 +187,40 @@ let componentsConfig = {
   '18': {desc: "超屏滑动",},
   '19': {desc: "底部浮动",},
   '20': {
+    type: "message",
     desc: "消息滚动",
     toComponent: (data) => {
       return {
         ...MessageEditor.getInitialValue(),
+        ...data,
       }
     },
     mapTemplateItem: (data) => {
       return null
     }
   },
-  '21': {desc: "猜你喜欢",},
-  '22': {desc: "同类推荐",},
-  '23': {desc: "阅读中心",},
-  '24': {desc: "视频",},
-  '25': {desc: "跳店铺",},
+  '21': {
+    type: "search",
+    desc: "猜你喜欢",
+  },
+  '22': {
+    type: "search",
+    desc: "同类推荐",
+  },
+  '23': {
+    type: "search",
+    desc: "阅读中心",
+  },
+  '24': {
+    type: "search",
+    desc: "视频",
+  },
+  '25': {
+    type: "search",
+    desc: "跳店铺",
+  },
   '26': {
+    type: "search",
     desc: "活动"
   }
 }
@@ -202,4 +236,8 @@ let itemType = {
   ITEM_TYPE_TEXT: 7,
   ITEM_TYPE_STORE: 8,
 }
-export {componentsConfig, itemType}
+let contentType = {
+  CUSTOM: 0,
+  INHERIT: 1
+}
+export {componentsConfig, itemType, contentType}

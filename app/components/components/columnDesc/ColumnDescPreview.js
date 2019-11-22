@@ -8,7 +8,7 @@ export default class ColumnDescPreview extends PureComponent {
     const {value} = this.props;
     return (
       <div className="rc-design-component-message-preview">
-        {value.content||PLACEHOLDER}
+        此处显示专题简介
       </div>
     );
   }

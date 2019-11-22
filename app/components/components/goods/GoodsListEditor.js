@@ -96,7 +96,8 @@ export default class GoodsListEditor extends DesignEditor {
         >
           <RadioGroup onChange={this.onSelectType.bind(this)} value={contentType}>
             <Radio value="0">自选</Radio>
-            <Radio value="1">专题</Radio>
+            <Radio value="1">继承容器</Radio>
+            {/*<Radio value="2">专题</Radio>*/}
           </RadioGroup>
         </ControlGroup>
         {
@@ -108,8 +109,16 @@ export default class GoodsListEditor extends DesignEditor {
               }
               <AddIcon onClick={this.onGoodsAddClick.bind(this)}/>
             </Card>)
-            :
-            (<ControlGroup
+            : null
+        }
+        {
+          contentType == '1' ? (<Card className="add-goods-card">
+            继承容器
+            </Card>)
+            : null
+        }
+        {
+          contentType == '2' ? (<ControlGroup
               label="专题:"
               required
               showError={showError || this.getMetaProperty('content', 'touched')}
@@ -128,6 +137,7 @@ export default class GoodsListEditor extends DesignEditor {
                 />
               </div>
             </ControlGroup>)
+            : null
         }
         <ControlGroup
           label="个数:"
@@ -154,10 +164,10 @@ export default class GoodsListEditor extends DesignEditor {
 
   static getInitialValue(settings, globalConfig) {
     return {
-      ctype:7,
+      ctype: 7,
       items: [],
       columnCount: "2",
-      contentType: "0"//列表内容是自选（0）还是专题（1）
+      contentType: "0"//列表内容是自选（0）还是继承容器（1）
     };
   }
 

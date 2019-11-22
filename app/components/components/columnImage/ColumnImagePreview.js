@@ -1,26 +1,14 @@
 import React, {PureComponent} from 'react';
-import {PLACEHOLDER} from "./ColumnImageListEditor"
+import {PLACEHOLDER} from "./ColumnImageEditor"
 
-import "./ColumnImageList.less"
+import "./ColumnImage.less"
 
 export default class ColumnImagePreview extends PureComponent {
   render() {
-    const {value} = this.props;
-    let {
-      selectType,
-      columnCount,
-      relation,
-      relationItemId,
-      items,
-    } = value;
+    const {value} = this.props
     return (
-      <div className="rc-design-component-image-list-preview">
-        <ul className="image-layout-container">
-          {value.items.map((item, index) => (
-            <li key={index} className={`image-layout-wrapper  col-count-${columnCount}`}>
-              <img className={`image`} src={item.url}></img>
-            </li>)) || PLACEHOLDER}
-        </ul>
+      <div className="rc-design-component-column-image-list-preview">
+        此处显示专题头图
       </div>
     );
   }

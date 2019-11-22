@@ -10,7 +10,7 @@ import ImageListEditor from "./image/ImageListEditor"
 import ImageListPreview from "./image/ImageListPreview"
 import ColumnDescEditor from "./columnDesc/ColumnDescEditor"
 import ColumnDescPreview from "./columnDesc/ColumnDescPreview"
-import ColumnImageListEditor from "./columnImage/ColumnImageListEditor"
+import ColumnImageEditor from "./columnImage/ColumnImageEditor"
 import ColumnImagePreview from "./columnImage/ColumnImagePreview"
 import GoodsDescEditor from "./goodsDesc/GoodsDescEditor"
 import GoodsDescPreview from "./goodsDesc/GoodsDescPreview"
@@ -35,7 +35,7 @@ export {
   SearchPreview,
   ColumnDescEditor,
   ColumnDescPreview,
-  ColumnImageListEditor,
+  ColumnImageEditor,
   ColumnImagePreview,
   GoodsDescEditor,
   GoodsDescPreview,

@@ -25,6 +25,9 @@ let api = disposeUrl({
   },
   listColumn: {
     url: "/ec/template/ajax/listColumn"
+  },
+  getColumn: {
+    url: "/ec/template/ajax/getColumn"
   }
 }, "http://localhost:8082/cms")
 
