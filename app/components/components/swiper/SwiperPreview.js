@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {PLACEHOLDER} from "./SwiperEditor"
 import {Swiper, Image} from "zent"
-import "./swiper.less"
+import "./Swiper.less"
 
 export default class SwiperPreview extends PureComponent {
   render() {

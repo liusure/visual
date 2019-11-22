@@ -8,6 +8,18 @@ import GoodsListEditor from "./goods/GoodsListEditor"
 import GoodsListPreview from "./goods/GoodsListPreview"
 import ImageListEditor from "./image/ImageListEditor"
 import ImageListPreview from "./image/ImageListPreview"
+import ColumnDescEditor from "./columnDesc/ColumnDescEditor"
+import ColumnDescPreview from "./columnDesc/ColumnDescPreview"
+import ColumnImageListEditor from "./columnImage/ColumnImageListEditor"
+import ColumnImageListPreview from "./columnImage/ColumnImageListPreview"
+import GoodsDescEditor from "./goodsDesc/GoodsDescEditor"
+import GoodsDescPreview from "./goodsDesc/GoodsDescPreview"
+import GoodsRichTextEditor from "./goodsRichText/GoodsRichTextEditor"
+import GoodsRichTextPreview from "./goodsRichText/GoodsRichTextPreview"
+import GoodsSwiperEditor from "./goodsSwiper/GoodsSwiperEditor"
+import GoodsSwiperPreview from "./goodsSwiper/GoodsSwiperPreview"
+import GoodsTagsEditor from "./goodsTags/GoodsTagsEditor"
+import GoodsTagsPreview from "./goodsTags/GoodsTagsPreview"
 
 
 export {
@@ -20,5 +32,17 @@ export {
   GoodsListEditor,
   GoodsListPreview,
   SearchEditor,
-  SearchPreview
+  SearchPreview,
+  ColumnDescEditor,
+  ColumnDescPreview,
+  ColumnImageListEditor,
+  ColumnImageListPreview,
+  GoodsDescEditor,
+  GoodsDescPreview,
+  GoodsRichTextEditor,
+  GoodsRichTextPreview,
+  GoodsSwiperEditor,
+  GoodsSwiperPreview,
+  GoodsTagsEditor,
+  GoodsTagsPreview,
 }

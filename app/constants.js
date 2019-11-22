@@ -1,14 +1,15 @@
 import {
   SearchEditor,
-  SearchPreview,
   MessageEditor,
-  MessagePreview,
   SwiperEditor,
-  SwiperPreview,
   GoodsListEditor,
-  GoodsListPreview,
   ImageListEditor,
-  ImageListPreview,
+  ColumnDescEditor,
+  ColumnImageListEditor,
+  GoodsDescEditor,
+  GoodsRichTextEditor,
+  GoodsSwiperEditor,
+  GoodsTagsEditor,
 } from "./components/components"
 
 let componentsConfig = {
@@ -98,18 +99,88 @@ let componentsConfig = {
       return null
     }
   },
-  '9': {desc: "栏目图片"},
-  '10': {desc: "栏目简介",},
-  '11': {desc: "商品简介",},
-  '12': {desc: "商品标签栏",},
-  '13': {desc: "商品图文介绍",},
-  '14': {desc: "商品图片轮播",},
+  '9': {
+    desc: "栏目图片",
+    toComponent: (data) => {
+      return {
+        ...ColumnImageListEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '10': {
+    desc: "栏目简介",
+    toComponent: (data) => {
+      return {
+        ...ColumnDescEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '11': {
+    desc: "商品简介",
+    toComponent: (data) => {
+      return {
+        ...GoodsDescEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '12': {
+    desc: "商品标签栏",
+    toComponent: (data) => {
+      return {
+        ...GoodsTagsEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '13': {
+    desc: "商品图文介绍",
+    toComponent: (data) => {
+      return {
+        ...GoodsRichTextEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '14': {
+    desc: "商品图片轮播",
+    toComponent: (data) => {
+      return {
+        ...GoodsSwiperEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
   '15': {desc: "基本信息",},
   '16': {desc: "目录收缩",},
   '17': {desc: "简介收缩",},
   '18': {desc: "超屏滑动",},
   '19': {desc: "底部浮动",},
-  '20': {desc: "消息滚动",},
+  '20': {
+    desc: "消息滚动",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
   '21': {desc: "猜你喜欢",},
   '22': {desc: "同类推荐",},
   '23': {desc: "阅读中心",},

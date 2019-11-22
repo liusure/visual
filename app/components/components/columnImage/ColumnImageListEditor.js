@@ -5,14 +5,14 @@ import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import AddIcon from '@/components/common/AddIcon';
 import ImageSelector from "@/components/common/ImageSelector";
 import {request, api} from "@/utils/utils";
-import "./ImageList.less"
+import "./ColumnImageList.less"
 
 export const PLACEHOLDER = '请添加图片';
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
 const {openDialog, closeDialog} = Dialog;
 
-export default class ImageListEditor extends DesignEditor {
+export default class ColumnImageListEditor extends DesignEditor {
 
   state = {
     goodsList: []
@@ -228,8 +228,8 @@ export default class ImageListEditor extends DesignEditor {
     );
   }
 
-  static designType = 'image-list';
-  static designDescription = '图片列表';
+  static designType = 'column-image';
+  static designDescription = '栏目头图';
 
   static getInitialValue(settings, globalConfig) {
     return {

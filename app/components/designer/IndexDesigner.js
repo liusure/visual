@@ -6,8 +6,8 @@ import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
   SearchPreview,
-  MessageEditor,
-  MessagePreview,
+  GoodsDesc,
+  GoodsDescPreview,
   SwiperEditor,
   SwiperPreview,
   GoodsListEditor,
@@ -40,9 +40,9 @@ const components = [{
 }, {
   type: "message",
   // 渲染预览部分的组件
-  preview: MessagePreview,
+  preview: GoodsDescPreview,
   // 渲染编辑部分的组件
-  editor: MessageEditor,
+  editor: GoodsDesc,
   appendable: true,
   canDelete: true,
   canInsert: true,
@@ -110,20 +110,13 @@ export default class IndexDesigner extends PureComponent {
   constructor() {
     super();
     this.state = {
+      template: {},
       value: [],
       showSaveDialog: false
     };
   }
 
   componentDidMount() {
-    let {template} = this.props;
-    this.setState({
-      template: template,
-      value: template.components
-    })
-  }
-
-  componentDidUpdate(prevProps) {
     let {template} = this.props;
     this.setState({
       template: template,
@@ -147,7 +140,6 @@ export default class IndexDesigner extends PureComponent {
       showSaveDialog: true
     })
   }
-
 
   handleSave() {
     let template = parseToTemplate({
@@ -173,7 +165,7 @@ export default class IndexDesigner extends PureComponent {
     const {showSaveDialog, value} = this.state;
     return (<div className="designer-container">
       <Design components={components}
-              onChange={this.onChange}
+              onChange={this.onChange.bind(this)}
               ref={this.saveDesign}
               cache
               cacheId="design-test"

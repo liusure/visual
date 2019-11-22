@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
 import {PLACEHOLDER} from "./SwiperEditor"
 import {Swiper, Image} from "zent"
-import "./swiper.less"
+import "./GoodsSwiper.less"
 
-export default class SwiperPreview extends PureComponent {
+export default class GoodsSwiperPreview extends PureComponent {
   render() {
     const {value} = this.props;
     return (

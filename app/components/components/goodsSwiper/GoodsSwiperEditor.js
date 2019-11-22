@@ -4,11 +4,11 @@ import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import EditorCard from '../../common/EditorCard';
 import ImageSelector from '../../common/ImageSelector';
 import {cloneDeep} from "lodash"
-import "./Swiper.less"
+import "./GoodsSwiper.less"
 
 export const PLACEHOLDER = '请选择图片';
 const {openDialog, closeDialog} = Dialog;
-export default class SwiperEditor extends DesignEditor {
+export default class GoodsSwiperEditor extends DesignEditor {
 
   onCardAddClick() {
     let {value: {id, items}} = this.props;//这里的id是areaId
@@ -54,8 +54,8 @@ export default class SwiperEditor extends DesignEditor {
     );
   }
 
-  static designType = 'swiper';
-  static designDescription = '图片轮播';
+  static designType = 'goods-swiper';
+  static designDescription = '商品图片轮播';
 
   static getInitialValue(settings, globalConfig) {
     return {
