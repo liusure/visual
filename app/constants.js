@@ -9,7 +9,10 @@ import {
   GoodsDescEditor,
   GoodsRichTextEditor,
   GoodsSwiperEditor,
+  GoodsInfoEditor,
   GoodsTagsEditor,
+  GoodsIndexEditor,
+  GoodsInfoMiniEditor,
 } from "./components/components"
 
 let componentsConfig = {
@@ -186,7 +189,7 @@ let componentsConfig = {
     desc: "基本信息",
     toComponent: (data) => {
       return {
-        ...GoodsSwiperEditor.getInitialValue(),
+        ...GoodsInfoEditor.getInitialValue(),
         ...data,
       }
     },
@@ -199,7 +202,7 @@ let componentsConfig = {
     desc: "目录收缩",
     toComponent: (data) => {
       return {
-        ...GoodsSwiperEditor.getInitialValue(),
+        ...GoodsIndexEditor.getInitialValue(),
         ...data,
       }
     },
@@ -207,9 +210,45 @@ let componentsConfig = {
       return null
     }
   },
-  '17': {desc: "简介收缩",},
-  '18': {desc: "超屏滑动",},
-  '19': {desc: "底部浮动",},
+  '17': {
+    type: "goods-info-mini",
+    desc: "简介收缩",
+    toComponent: (data) => {
+      return {
+        ...GoodsInfoMiniEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '18': {
+    type: "image-scroll",
+    desc: "超屏滑动",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '19': {
+    type: "fixed",
+    desc: "底部浮动",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
   '20': {
     type: "message",
     desc: "消息滚动",
@@ -224,28 +263,95 @@ let componentsConfig = {
     }
   },
   '21': {
-    type: "search",
+    type: "guess-like",
     desc: "猜你喜欢",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '22': {
-    type: "search",
+    type: "goods-recommend",
     desc: "同类推荐",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '23': {
-    type: "search",
+    type: "reading-center",
     desc: "阅读中心",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '24': {
-    type: "search",
+    type: "video",
     desc: "视频",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '25': {
-    type: "search",
+    type: "store-info",
     desc: "跳店铺",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '26': {
-    type: "search",
-    desc: "活动"
+    type: "activity",
+    desc: "活动",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '27': {
+    type: "goods-scroll",
+    desc: "活动",
+    toComponent: (data) => {
+      return {
+        ...MessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   }
 }
 

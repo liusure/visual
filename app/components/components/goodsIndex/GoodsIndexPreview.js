@@ -7,7 +7,7 @@ export default class GoodsIndexPreview extends PureComponent {
   render() {
     const {value} = this.props;
     return (
-      <div className="rc-design-component-goods-info-preview">
+      <div className="rc-design-component-goods-index-preview">
         {value.content || PLACEHOLDER}
       </div>
     );

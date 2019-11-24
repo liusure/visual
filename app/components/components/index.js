@@ -24,6 +24,8 @@ import GoodsInfoEditor from "./goodsInfo/GoodsInfoEditor"
 import GoodsInfoPreview from "./goodsInfo/GoodsInfoPreview"
 import GoodsIndexEditor from "./goodsIndex/GoodsIndexEditor"
 import GoodsIndexPreview from "./goodsIndex/GoodsIndexPreview"
+import GoodsInfoMiniEditor from "./goodsInfoMini/GoodsInfoMiniEditor"
+import GoodsInfoMiniPreview from "./goodsInfoMini/GoodsInfoMiniPreview"
 
 
 export {
@@ -52,5 +54,7 @@ export {
   GoodsInfoEditor,
   GoodsInfoPreview,
   GoodsIndexEditor,
-  GoodsIndexPreview
+  GoodsIndexPreview,
+  GoodsInfoMiniEditor,
+  GoodsInfoMiniPreview
 }

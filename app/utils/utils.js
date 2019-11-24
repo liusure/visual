@@ -29,7 +29,7 @@ let api = disposeUrl({
   getColumn: {
     url: "/ec/template/ajax/getColumn"
   }
-}, "http://localhost:8082/cms")
+}, "http://localhost:8081/cms")
 
 function disposeUrl(obj, prefix) {
   Object.keys(obj).forEach(v => {
