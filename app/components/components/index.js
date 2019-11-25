@@ -4,8 +4,8 @@ import MessageEditor from "./message/MessageEditor"
 import MessagePreview from "./message/MessagePreview"
 import SwiperEditor from "./swiper/SwiperEditor"
 import SwiperPreview from "./swiper/SwiperPreview"
-import GoodsListEditor from "./goods/GoodsListEditor"
-import GoodsListPreview from "./goods/GoodsListPreview"
+import GoodsListEditor from "./goodsList/GoodsListEditor"
+import GoodsListPreview from "./goodsList/GoodsListPreview"
 import ImageListEditor from "./image/ImageListEditor"
 import ImageListPreview from "./image/ImageListPreview"
 import ColumnDescEditor from "./columnDesc/ColumnDescEditor"
@@ -26,6 +26,24 @@ import GoodsIndexEditor from "./goodsIndex/GoodsIndexEditor"
 import GoodsIndexPreview from "./goodsIndex/GoodsIndexPreview"
 import GoodsInfoMiniEditor from "./goodsInfoMini/GoodsInfoMiniEditor"
 import GoodsInfoMiniPreview from "./goodsInfoMini/GoodsInfoMiniPreview"
+import GoodsStoreEditor from "./goodsStore/GoodsStoreEditor"
+import GoodsStorePreview from "./goodsStore/GoodsStorePreview"
+import GoodsRecommendEditor from "./goodsRecommend/GoodsRecommendEditor"
+import GoodsRecommendPreview from "./goodsRecommend/GoodsRecommendPreview"
+import ReadingCenterEditor from "./readingCenter/ReadingCenterEditor"
+import ReadingCenterPreview from "./readingCenter/ReadingCenterPreview"
+import FixedEditor from "./fixed/FixedEditor"
+import FixedPreview from "./fixed/FixedPreview"
+import GuessYouLikeEditor from "./guessYouLike/GuessYouLikeEditor"
+import GuessYouLikePreview from "./guessYouLike/GuessYouLikePreview"
+import ActivityEditor from "./activity/ActivityEditor"
+import ActivityPreview from "./activity/ActivityPreview"
+import GoodsScrollEditor from "./goodsScroll/GoodsScrollEditor"
+import GoodsScrollPreview from "./goodsScroll/GoodsScrollPreview"
+import VideoEditor from "./video/VideoEditor"
+import VideoPreview from "./video/VideoPreview"
+import ImageScrollEditor from "./imageScroll/ImageScrollEditor"
+import ImageScrollPreview from "./imageScroll/ImageScrollPreview"
 
 
 export {
@@ -56,5 +74,23 @@ export {
   GoodsIndexEditor,
   GoodsIndexPreview,
   GoodsInfoMiniEditor,
-  GoodsInfoMiniPreview
+  GoodsInfoMiniPreview,
+  GoodsStoreEditor,
+  GoodsStorePreview,
+  GoodsRecommendEditor,
+  GoodsRecommendPreview,
+  ReadingCenterEditor,
+  ReadingCenterPreview,
+  FixedEditor,
+  FixedPreview,
+  GuessYouLikeEditor,
+  GuessYouLikePreview,
+  ActivityEditor,
+  ActivityPreview,
+  GoodsScrollEditor,
+  GoodsScrollPreview,
+  VideoEditor,
+  VideoPreview,
+  ImageScrollEditor,
+  ImageScrollPreview
 }

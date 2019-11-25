@@ -25,7 +25,8 @@ export default class GoodsRichTextEditor extends DesignEditor {
   static getInitialValue(settings, globalConfig) {
     return {
       content: '',
-      scrollable: false
+      scrollable: false,
+      ctype:13
     };
   }
 

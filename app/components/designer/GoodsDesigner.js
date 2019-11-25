@@ -26,6 +26,14 @@ import {
   GoodsListPreview,
   ImageListEditor,
   ImageListPreview,
+  GoodsRecommendEditor,
+  GoodsRecommendPreview,
+  GoodsStoreEditor,
+  GoodsStorePreview,
+  GuessYouLikeEditor,
+  GuessYouLikePreview,
+  GoodsInfoMiniEditor,
+  GoodsInfoMiniPreview
 } from "../components"
 import {Button, Dialog, Input} from "zent"
 import '@zent/design/css/index.css';
@@ -33,6 +41,54 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
+  type: "goods-store",
+  // 渲染预览部分的组件
+  preview: GoodsStorePreview,
+  // 渲染编辑部分的组件
+  editor: GoodsStoreEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+},{
+  type: "guess-you-like",
+  // 渲染预览部分的组件
+  preview: GuessYouLikePreview,
+  // 渲染编辑部分的组件
+  editor: GuessYouLikeEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-recommend",
+  // 渲染预览部分的组件
+  preview: GoodsRecommendPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsRecommendEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
   type: "swiper",
   // 渲染预览部分的组件
   preview: SwiperPreview,
@@ -70,6 +126,22 @@ const components = [{
   preview: GoodsInfoPreview,
   // 渲染编辑部分的组件
   editor: GoodsInfoEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-info-mini",
+  // 渲染预览部分的组件
+  preview: GoodsInfoMiniPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsInfoMiniEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,

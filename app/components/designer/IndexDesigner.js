@@ -8,14 +8,24 @@ import {
   SearchPreview,
   MessageEditor,
   MessagePreview,
-  GoodsDescEditor,
-  GoodsDescPreview,
   SwiperEditor,
   SwiperPreview,
   GoodsListEditor,
   GoodsListPreview,
   ImageListEditor,
   ImageListPreview,
+  ReadingCenterEditor,
+  ReadingCenterPreview,
+  VideoEditor,
+  VideoPreview,
+  FixedEditor,
+  FixedPreview,
+  ImageScrollEditor,
+  ImageScrollPreview,
+  GoodsScrollEditor,
+  GoodsScrollPreview,
+  ActivityEditor,
+  ActivityPreview
 } from "../components"
 import {Button, Dialog, Input} from "zent"
 import '@zent/design/css/index.css';
@@ -93,6 +103,102 @@ const components = [{
   preview: ImageListPreview,
   // 渲染编辑部分的组件
   editor: ImageListEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "video",
+  // 渲染预览部分的组件
+  preview: VideoPreview,
+  // 渲染编辑部分的组件
+  editor: VideoEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "image-scroll",
+  // 渲染预览部分的组件
+  preview: ImageScrollPreview,
+  // 渲染编辑部分的组件
+  editor: ImageScrollEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-scroll",
+  // 渲染预览部分的组件
+  preview: GoodsScrollPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsScrollEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "fixed",
+  // 渲染预览部分的组件
+  preview: FixedPreview,
+  // 渲染编辑部分的组件
+  editor: FixedEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "activity",
+  // 渲染预览部分的组件
+  preview: ActivityPreview,
+  // 渲染编辑部分的组件
+  editor: ActivityEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "reading-center",
+  // 渲染预览部分的组件
+  preview: ReadingCenterPreview,
+  // 渲染编辑部分的组件
+  editor: ReadingCenterEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,

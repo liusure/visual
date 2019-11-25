@@ -5,7 +5,7 @@ import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 
 import "./GoodsStore.less"
 
-export const PLACEHOLDER = '此处显示商品目录';
+export const PLACEHOLDER = '此处显示商品店铺';
 
 export default class GoodsStoreEditor extends DesignEditor {
 
@@ -19,13 +19,13 @@ export default class GoodsStoreEditor extends DesignEditor {
     );
   }
 
-  static designType = 'goods-index';
-  static designDescription = '商品目录';
+  static designType = 'goods-store';
+  static designDescription = '店铺信息';
 
   static getInitialValue(settings, globalConfig) {
     return {
       contentType: contentType.INHERIT,
-      ctype: 16
+      ctype: 25
     };
   }
 

@@ -235,7 +235,8 @@ export default class ImageListEditor extends DesignEditor {
     return {
       selectType: 'select',
       columnCount: "2",
-      items: []
+      items: [],
+      ctype:6
     };
   }
 

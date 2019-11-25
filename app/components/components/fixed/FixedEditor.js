@@ -3,29 +3,29 @@ import {Input} from 'zent';
 import {contentType} from "@/constants";
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 
-import "./GoodsRecommend.less"
+import "./Fixed.less"
 
-export const PLACEHOLDER = '此处显示同类推荐';
+export const PLACEHOLDER = '此处显示底部浮动';
 
-export default class GoodsRecommendEditor extends DesignEditor {
+export default class FixedEditor extends DesignEditor {
 
   render() {
     const {value: {content}, showError, validation} = this.props;
 
     return (
-      <div className="rc-design-component-goods-recommend-editor">
-        <div className="rc-design-editor-component-title">此组件无需编辑内容</div>
+      <div className="rc-design-component-fixed-editor">
+        <div className="rc-design-editor-component-title"></div>
       </div>
     );
   }
 
-  static designType = 'goods-recommend';
-  static designDescription = '同类推荐';
+  static designType = 'fixed';
+  static designDescription = '底部浮动';
 
   static getInitialValue(settings, globalConfig) {
     return {
       contentType: contentType.INHERIT,
-      ctype: 22
+      ctype: 19
     };
   }
 

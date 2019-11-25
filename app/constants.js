@@ -13,7 +13,17 @@ import {
   GoodsTagsEditor,
   GoodsIndexEditor,
   GoodsInfoMiniEditor,
+  GoodsStoreEditor,
+  GoodsRecommendEditor,
+  ReadingCenterEditor,
+  FixedEditor,
+  GuessYouLikeEditor,
+  ActivityEditor,
+  GoodsScrollEditor,
+  VideoEditor,
+
 } from "./components/components"
+import ImageScrollEditor from "@/components/components/imageScroll/ImageScrollEditor";
 
 let componentsConfig = {
   '0': {
@@ -228,7 +238,7 @@ let componentsConfig = {
     desc: "超屏滑动",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...ImageScrollEditor.getInitialValue(),
         ...data,
       }
     },
@@ -241,7 +251,7 @@ let componentsConfig = {
     desc: "底部浮动",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...FixedEditor.getInitialValue(),
         ...data,
       }
     },
@@ -267,7 +277,7 @@ let componentsConfig = {
     desc: "猜你喜欢",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...GuessYouLikeEditor.getInitialValue(),
         ...data,
       }
     },
@@ -280,7 +290,7 @@ let componentsConfig = {
     desc: "同类推荐",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...GoodsRecommendEditor.getInitialValue(),
         ...data,
       }
     },
@@ -293,7 +303,7 @@ let componentsConfig = {
     desc: "阅读中心",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...ReadingCenterEditor.getInitialValue(),
         ...data,
       }
     },
@@ -306,7 +316,7 @@ let componentsConfig = {
     desc: "视频",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...VideoEditor.getInitialValue(),
         ...data,
       }
     },
@@ -315,11 +325,11 @@ let componentsConfig = {
     }
   },
   '25': {
-    type: "store-info",
+    type: "goods-store",
     desc: "跳店铺",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...GoodsStoreEditor.getInitialValue(),
         ...data,
       }
     },
@@ -332,7 +342,7 @@ let componentsConfig = {
     desc: "活动",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...ActivityEditor.getInitialValue(),
         ...data,
       }
     },
@@ -345,7 +355,7 @@ let componentsConfig = {
     desc: "活动",
     toComponent: (data) => {
       return {
-        ...MessageEditor.getInitialValue(),
+        ...GoodsScrollEditor.getInitialValue(),
         ...data,
       }
     },

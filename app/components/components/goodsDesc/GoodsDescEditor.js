@@ -23,9 +23,10 @@ export default class GoodsDescEditor extends DesignEditor {
   static designDescription = '商品介绍';
 
   static getInitialValue(settings, globalConfig) {
-return {
+    return {
       content: '',
-      scrollable: false
+      scrollable: false,
+      ctype: 11
     };
   }
 
