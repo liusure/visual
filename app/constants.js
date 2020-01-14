@@ -21,7 +21,9 @@ import {
   ActivityEditor,
   GoodsScrollEditor,
   VideoEditor,
-
+  NavigationEditor,
+  FlashSaleEditor,
+  GoodsMessageEditor
 } from "./components/components"
 import ImageScrollEditor from "@/components/components/imageScroll/ImageScrollEditor";
 
@@ -50,8 +52,22 @@ let componentsConfig = {
     }
   },
   '1': {
-    type: "nav",
+    type: "navigation",
     desc: "导航",
+    toComponent: (data) => {
+      return {
+        ...NavigationEditor.getInitialValue(),
+        ...data,
+        items: data.items.map(item => {
+          return {
+            ...item,
+          }
+        })
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
   },
   '6': {
     type: "image-list",
@@ -66,7 +82,7 @@ let componentsConfig = {
             url: item.resourcePic
           }
         }),
-        columnCount: data.rowColCount
+        rowColCount: data.rowColCount || 2
       }
     },
     mapTemplateItem: (data) => {
@@ -88,9 +104,9 @@ let componentsConfig = {
         items: data.items.map(item => {
           return {
             ...item,
-            name: item.item.name,
+            imageUrls: item.item.imageUrls,
             price: item.item.price,
-            imageUrls: item.item.imageUrls
+            goodsName: item.item.name
           }
         })
       }
@@ -98,7 +114,10 @@ let componentsConfig = {
     mapTemplateItem: (data) => {
       return data.items.map(item => {
         return {
-          ...item
+          itemType: itemType.ITEM_TYPE_GOODS,
+          targetId: item.targetId,
+          name: item.name,
+          id: item.id
         }
       })
     }
@@ -321,7 +340,12 @@ let componentsConfig = {
       }
     },
     mapTemplateItem: (data) => {
-      return null
+      return data.items.map(item => {
+        return {
+          ...item,
+          resourcePic: item.url
+        }
+      })
     }
   },
   '25': {
@@ -351,11 +375,52 @@ let componentsConfig = {
     }
   },
   '27': {
+    type: "goods-message",
+    desc: "诱导订单滚动",
+    toComponent: (data) => {
+      return {
+        ...GoodsMessageEditor.getInitialValue(),
+        ...data,
+      }
+    },
+    mapTemplateItem: (data) => {
+      return null
+    }
+  },
+  '28': {
     type: "goods-scroll",
-    desc: "活动",
+    desc: "拼团商品",
     toComponent: (data) => {
       return {
         ...GoodsScrollEditor.getInitialValue(),
+        ...data,
+        items: data.items.map(item => {
+          return {
+            ...item,
+            imageUrls: item.item.imageUrls,
+            price: item.item.price,
+            goodsName: item.item.name
+          }
+        })
+      }
+    },
+    mapTemplateItem: (data) => {
+      return data.items.map(item => {
+        return {
+          itemType: itemType.ITEM_TYPE_GOODS,
+          targetId: item.targetId,
+          name: item.name,
+          id: item.id
+        }
+      })
+    }
+  },
+  '29': {
+    type: "flash-sale",
+    desc: "秒杀专区",
+    toComponent: (data) => {
+      return {
+        ...FlashSaleEditor.getInitialValue(),
         ...data,
       }
     },
@@ -364,14 +429,14 @@ let componentsConfig = {
     }
   }
 }
-
+let mediaUrl = "http://csimage.tenfen.com/imagecms/"
 let itemType = {
   ITEM_TYPE_COLUMN: 0,
   ITEM_TYPE_GOODS: 1,
   ITEM_TYPE_NEWS: 2,
   ITEM_TYPE_ACTIVITY: 3,
   ITEM_TYPE_Link: 4,
-  ITEM_TYPE_Task: 5,
+  ITEM_TYPE_TASK: 5,
   ITEM_TYPE_PACKAGE: 6,
   ITEM_TYPE_TEXT: 7,
   ITEM_TYPE_STORE: 8,
@@ -380,4 +445,4 @@ let contentType = {
   CUSTOM: 0,
   INHERIT: 1
 }
-export {componentsConfig, itemType, contentType}
+export {componentsConfig, itemType, contentType, mediaUrl}

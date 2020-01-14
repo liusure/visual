@@ -12,7 +12,7 @@ export default class ImageScrollPreview extends PureComponent {
                                             autoplayInterval={2000}>{value.items.map((item, index) => <div
           className="swiper-demo-simple-h"
           key={index}><img className="swiper-img" src={item.url}/>
-        </div>)}</Swiper>) : PLACEHOLDER
+        </div>)}</Swiper>) : <div className="no_data">{PLACEHOLDER}</div>
         }
       </div>
     );

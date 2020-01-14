@@ -1,13 +1,9 @@
 import React, {PureComponent} from 'react';
 import Design from "@zent/design"
 import {Consumer} from "../index/index"
-import {request, api} from '@/utils/utils'
+import {request, api, mediaUrlFormat} from '@/utils/utils'
 import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
-  SearchEditor,
-  SearchPreview,
-  MessageEditor,
-  MessagePreview,
   ColumnDescEditor,
   ColumnDescPreview,
   ColumnImageEditor,
@@ -18,6 +14,12 @@ import {
   GoodsListPreview,
   ImageListEditor,
   ImageListPreview,
+  FlashSaleEditor,
+  FlashSalePreview,
+  GoodsMessageEditor,
+  GoodsMessagePreview,
+  GoodsScrollPreview,
+  GoodsScrollEditor
 } from "../components"
 import {Button, Dialog, Input} from "zent"
 import '@zent/design/css/index.css';
@@ -57,11 +59,59 @@ const components = [{
   previewProps: () => {
   },
 }, {
+  type: "flash-sale",
+  // 渲染预览部分的组件
+  preview: FlashSalePreview,
+  // 渲染编辑部分的组件
+  editor: FlashSaleEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-message",
+  // 渲染预览部分的组件
+  preview: GoodsMessagePreview,
+  // 渲染编辑部分的组件
+  editor: GoodsMessageEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
   type: "swiper",
   // 渲染预览部分的组件
   preview: SwiperPreview,
   // 渲染编辑部分的组件
   editor: SwiperEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-scroll",
+  // 渲染预览部分的组件
+  preview: GoodsScrollPreview,
+  // 渲染编辑部分的组件
+  editor: GoodsScrollEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
@@ -160,6 +210,7 @@ export default class ColumnDesigner extends PureComponent {
       this.setState({
         showSaveDialog: false
       })
+      window.location.href = window.location.href
     })
   }
 
@@ -170,8 +221,6 @@ export default class ColumnDesigner extends PureComponent {
       <Design components={components}
               onChange={this.onChange.bind(this)}
               ref={this.saveDesign}
-              cache
-              cacheId="design-test"
               confirmUnsavedLeave={false}
               value={value}
               globalConfig={window._global}></Design>

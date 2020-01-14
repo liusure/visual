@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialog, Card, Radio, Select, Table} from 'zent';
-import {request, api} from '@/utils/utils';
+import {request, api, mediaUrlFormat} from '@/utils/utils';
 import {itemType} from '@/constants';
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import AddIcon from '@/components/common/AddIcon';
@@ -19,21 +19,11 @@ export default class GoodsListEditor extends DesignEditor {
   constructor(props) {
     super(props);
     this.state = {
-      ...this.state,
-      columnData: []
+      ...this.state
     }
   }
 
   componentDidMount() {
-    request({
-      method: "GET",
-      url: `${api.listColumn}`,
-      params: {}
-    }).then((res) => {
-      this.setState({
-        columnData: res.items
-      })
-    })
   }
 
   onSelectType(e) {
@@ -56,7 +46,6 @@ export default class GoodsListEditor extends DesignEditor {
 
   handleGoodsConfirm({selectedRowKeys, selectedRows}) {
     let {value, value: {id, items}, onChange} = this.props;
-    console.log(selectedRows)
     let itemsArr = [...items, ...selectedRows.map(item => ({
       targetId: item.id,
       itemType: itemType.ITEM_TYPE_GOODS,
@@ -73,7 +62,7 @@ export default class GoodsListEditor extends DesignEditor {
   }
 
   handleGoodsDelete(index) {
-    const {value, value: {columnCount, items}, showError, validation, onChange} = this.props;
+    const {value, value: {rowColCount, items}, showError, validation, onChange} = this.props;
     items.splice(index, 1);
     onChange && onChange({
       ...value,
@@ -83,7 +72,7 @@ export default class GoodsListEditor extends DesignEditor {
 
   render() {
     const {
-      value: {columnCount, columnSelected, items, contentType}, showError, validation
+      value, value: {rowColCount, items, contentType}, showError, validation
     } = this.props;
     return (
       <div className="rc-design-component-goods-list-editor">
@@ -94,7 +83,7 @@ export default class GoodsListEditor extends DesignEditor {
           showError={showError || this.getMetaProperty('content', 'touched')}
           error={validation.content}
         >
-          <RadioGroup onChange={this.onSelectType.bind(this)} value={contentType}>
+          <RadioGroup onChange={this.onSelectType.bind(this)} value={value.contentType + ""}>
             <Radio value="0">自选</Radio>
             <Radio value="1">继承容器</Radio>
             {/*<Radio value="2">专题</Radio>*/}
@@ -104,7 +93,7 @@ export default class GoodsListEditor extends DesignEditor {
           contentType == '0' ? (<Card className="add-goods-card">
               {
                 items.map((item, index) => <AddIcon onDelete={this.handleGoodsDelete.bind(this, index)}
-                                                    src={item.imageUrls && item.imageUrls[0] || default_img}
+                                                    src={item.imageUrls && mediaUrlFormat(item.imageUrls[0]) || default_img}
                                                     onClick={this.onGoodsAddClick.bind(this)}/>)
               }
               <AddIcon onClick={this.onGoodsAddClick.bind(this)}/>
@@ -113,30 +102,8 @@ export default class GoodsListEditor extends DesignEditor {
         }
         {
           contentType == '1' ? (<Card className="add-goods-card">
-            继承容器
+              继承容器
             </Card>)
-            : null
-        }
-        {
-          contentType == '2' ? (<ControlGroup
-              label="专题:"
-              required
-              showError={showError || this.getMetaProperty('content', 'touched')}
-              error={validation.content}
-            >
-              <div>
-                <Select
-                  data={this.state.columnData}
-                  optionValue="id"
-                  optionText="name"
-                  name="chooseColumn"
-                  placeholder="选择专题"
-                  onChange={this.onInputChange}
-                  value={columnSelected}
-                  filter={(item, keyword) => item.name.indexOf(keyword) > -1}
-                />
-              </div>
-            </ControlGroup>)
             : null
         }
         <ControlGroup
@@ -146,10 +113,10 @@ export default class GoodsListEditor extends DesignEditor {
           error={validation.content}
         >
           <Select
-            name="columnCount"
+            name="rowColCount"
             placeholder="选择列数"
             onChange={this.onInputChange}
-            value={columnCount}
+            value={rowColCount}
           >
             <Option value="1">1</Option>
             <Option value="2">2</Option>
@@ -166,7 +133,7 @@ export default class GoodsListEditor extends DesignEditor {
     return {
       ctype: 7,
       items: [],
-      columnCount: "2",
+      rowColCount: "2",
       contentType: "0"//列表内容是自选（0）还是继承容器（1）
     };
   }
@@ -174,11 +141,6 @@ export default class GoodsListEditor extends DesignEditor {
   static validate(value) {
     return new Promise(resolve => {
       const errors = {};
-      const {content} = value;
-      if (!content || !content.trim()) {
-        errors.content = '请填写公告内容';
-      }
-
       resolve(errors);
     });
   }

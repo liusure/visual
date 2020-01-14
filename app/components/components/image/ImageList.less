@@ -1,15 +1,28 @@
 .rc-design-component-image-list-editor {
-  .add-image-card {
-    margin-bottom: 10px;
+  .add-image-card-container {
+    display: block;
+    margin-bottom: 20px;
+    .add-image-card {
+      margin-bottom: 10px;
+      display: flex;
 
-    .add-goods-wrapper {
-      display: inline-block;
-    }
+      .add-goods-wrapper {
+        display: inline-block;
+      }
 
-    .update-panel {
-      display: inline-block;
-      .zent-select{
-        width: 100px;
+      .update-panel {
+        margin:0 5px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .update-relation-wrapper {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .zent-select {
+          margin: 0;
+        }
       }
     }
   }
@@ -21,12 +34,25 @@
   .image-layout-container {
     display: block;
     list-style: none;
-    min-height: 120px;
+    min-height: 20px;
+
+    .tip {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: #F5F5F5;
+      border: 1px solid #CCC;
+      color: #000;
+      border-radius: 4px;
+      padding: 2px 8px;
+      transform: translate(-50%, -50%);
+    }
 
     .image-layout-wrapper {
       //float: left;
       display: inline-block;
       box-sizing: border-box;
+      position: relative;
 
       .image {
         width: 100%;

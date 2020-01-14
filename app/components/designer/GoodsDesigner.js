@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import Design from "@zent/design"
 import {Consumer} from "../index/index"
-import {request, api} from '@/utils/utils'
+import {request, api,mediaUrlFormat} from '@/utils/utils'
 import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
@@ -57,7 +57,7 @@ const components = [{
   previewProps: () => {
   },
 },{
-  type: "guess-you-like",
+  type: "guess-like",
   // 渲染预览部分的组件
   preview: GuessYouLikePreview,
   // 渲染编辑部分的组件
@@ -304,6 +304,7 @@ export default class GoodsDesigner extends PureComponent {
       this.setState({
         showSaveDialog: false
       })
+      window.location.href = window.location.href
     })
   }
 
@@ -314,8 +315,6 @@ export default class GoodsDesigner extends PureComponent {
       <Design components={components}
               onChange={this.onChange.bind(this)}
               ref={this.saveDesign}
-              cache
-              cacheId="design-test"
               confirmUnsavedLeave={false}
               value={value}
               globalConfig={window._global}></Design>

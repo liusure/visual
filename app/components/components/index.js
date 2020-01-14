@@ -44,6 +44,12 @@ import VideoEditor from "./video/VideoEditor"
 import VideoPreview from "./video/VideoPreview"
 import ImageScrollEditor from "./imageScroll/ImageScrollEditor"
 import ImageScrollPreview from "./imageScroll/ImageScrollPreview"
+import NavigationEditor from "./navigation/NavigationEditor"
+import NavigationPreview from "./navigation/NavigationPreview"
+import FlashSaleEditor from "./flashSale/FlashSaleEditor"
+import FlashSalePreview from "./flashSale/FlashSalePreview"
+import GoodsMessageEditor from "./goodsMessage/GoodsMessageEditor"
+import GoodsMessagePreview from "./goodsMessage/GoodsMessagePreview"
 
 
 export {
@@ -92,5 +98,11 @@ export {
   VideoEditor,
   VideoPreview,
   ImageScrollEditor,
-  ImageScrollPreview
+  ImageScrollPreview,
+  NavigationEditor,
+  NavigationPreview,
+  FlashSaleEditor,
+  FlashSalePreview,
+  GoodsMessageEditor,
+  GoodsMessagePreview
 }

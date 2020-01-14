@@ -12,7 +12,7 @@ export default class GoodsScrollPreview extends PureComponent {
                                             autoplayInterval={2000}>{value.items.map((item, index) => <div
           className="goods-scroll-demo-simple-h"
           key={index}><img className="goods-scroll-img" src={item.url}/>
-        </div>)}</Swiper>) : PLACEHOLDER
+        </div>)}</Swiper>) : <div className="no_data">{PLACEHOLDER}</div>
         }
       </div>
     );

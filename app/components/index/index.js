@@ -14,7 +14,7 @@ export default class NoticePreview extends PureComponent {
 
   state = {
     template: null,//模板详情
-    activeId: '1',
+    activeId: null,
     params: {}
   };
 
@@ -41,7 +41,6 @@ export default class NoticePreview extends PureComponent {
         }
       }).then((res) => {
         let template = formatter(res.item);
-        console.log(template)
         this.setState({
           template,
           activeId: template.ctype + ""

@@ -1,11 +1,13 @@
 import React from 'react';
-import {Dialog, Card, Radio, Select, Input, Button} from 'zent';
+import {Dialog, Card, Radio, Select, Input, Button, Tag} from 'zent';
 
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import AddIcon from '@/components/common/AddIcon';
 import ImageSelector from "@/components/common/ImageSelector";
-import {request, api} from "@/utils/utils";
+import {request, api, mediaUrlFormat} from "@/utils/utils";
 import "./ImageList.less"
+import {contentType} from "@/constants";
+import RelationSelector from "@/components/common/RelationSelector";
 
 export const PLACEHOLDER = '请添加图片';
 const RadioGroup = Radio.Group;
@@ -14,70 +16,19 @@ const {openDialog, closeDialog} = Dialog;
 
 export default class ImageListEditor extends DesignEditor {
 
-  state = {
-    goodsList: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      ...this.state,
+      updatingItemIndex: null
+    }
   }
 
   componentDidMount() {
-    request({
-      method: "GET",
-      url: `${api.listGoods}`,
-      params: {
-        'page_no': 1,
-        'page_size': 9999
-      }
-    }).then((res) => {
-      this.setState({
-        goodsList: res.items
-      })
-    })
   }
 
   handleImageSelectType(e) {
     this.setState({selectType: e.target.value});
-  }
-
-  handleItemTypeSelected(item, e) {
-    item.itemType = e.target.value;
-  }
-
-  handleRelationUpdateClick(item) {
-    let {value, showError, validation, onChange} = this.props;
-    openDialog({
-      dialogId: "relationDialog",
-      parentComponent: this,
-      children: <div>
-        <ControlGroup
-          label="关联:"
-          required
-          showError={showError || this.getMetaProperty('content', 'touched')}
-          error={validation.content}
-        >
-          {item.itemType}
-
-        </ControlGroup>
-
-      </div>,
-      footer: (<div><Button onClick={() => closeDialog('relationDialog')}>关闭</Button><Button
-        onClick={this.handleSaveRelation.bind(this, item)}>保存</Button></div>),
-    })
-  }
-
-  handleRelationUpdate(item, key, e) {
-    item[key] = e.target.value;
-    let {value, onChange} = this.props;
-    onChange && onChange({
-      ...value,
-      items: [...this.props.value.items]
-    });
-  }
-
-  handleSaveRelation() {
-    let {value, onChange} = this.props;
-    onChange && onChange({
-      ...value,
-      items: [...this.props.value.items]
-    });
   }
 
   handleImageAddClick() {
@@ -103,49 +54,6 @@ export default class ImageListEditor extends DesignEditor {
     closeDialog('chooseImages');
   }
 
-  formatUpdatePanel(item) {
-    let {validation, showError} = this.props;
-    return (<div className="update-panel">
-      <Select
-        name="itemType"
-        placeholder="选择类型"
-        onChange={this.handleRelationUpdate.bind(this, item, 'itemType')}
-        value={item.itemType}
-      >
-        <Option value="0">无</Option>
-        <Option value="1">商品</Option>
-        <Option value="2">文章</Option>
-        <Option value="3">外链</Option>
-      </Select>
-      {
-        item.itemType == '1' ?
-          <Select
-            data={this.state.goodsList}
-            optionValue="id"
-            optionText="name"
-            name="targetId"
-            placeholder="选择商品"
-            onChange={this.onInputChange}
-            value={item.targetId}
-          >
-          </Select>
-          : null
-      } {
-      item.itemType == '2' ? (
-        <Select
-          name="itemType"
-          placeholder="选择文章"
-          onChange={this.onInputChange}
-          value={item.targetId}
-        >
-        </Select>
-      ) : null
-    } {
-      item.itemType == '3' ? (<Input/>) : null
-    }
-    </div>)
-  }
-
   handleImageDelete(index) {
     const {value, value: {items}, onChange} = this.props;
     items.splice(index, 1);
@@ -155,11 +63,27 @@ export default class ImageListEditor extends DesignEditor {
     });
   }
 
+  handleRelationChange(item) {
+    const {value, value: {items}, onChange} = this.props;
+    let updatingItems = [...items]
+    updatingItems.map(updatingItem => {
+      if (updatingItem.id === item.id) {
+        return item;
+      } else {
+        return updatingItem;
+      }
+    })
+    onChange && onChange({
+      ...value,
+      items: updatingItems
+    });
+  }
+
   render() {
     const {
       value: {
         selectType,
-        columnCount,
+        rowColCount,
         items
       },
       showError,
@@ -181,12 +105,12 @@ export default class ImageListEditor extends DesignEditor {
         </ControlGroup>
         {
           selectType == 'select' ? (
-              <Card className="add-image-card">{
-                items ? (items.map((item, index) => <div className="add-goods-wrapper">
-                  <div>
-                    <AddIcon inline key={index} src={item.url} onClick={this.handleImageAddClick.bind(this)}
+              <Card className="add-image-card-container">{
+                items ? (items.map((item, index) => <div className="add-goods-wrapper" key={index}>
+                  <div className="add-image-card">
+                    <AddIcon inline src={item.url} onClick={this.handleImageAddClick.bind(this)}
                              onDelete={this.handleImageDelete.bind(this, index)}/>
-                    {/*{this.formatUpdatePanel(item)}*/}
+                    <RelationSelector item={item} onChange={this.handleRelationChange.bind(this)}/>
                   </div>
                 </div>)) : null
               }
@@ -212,10 +136,10 @@ export default class ImageListEditor extends DesignEditor {
           error={validation.content}
         >
           <Select
-            name="columnCount"
+            name="rowColCount"
             placeholder="选择列数"
             onChange={this.onInputChange}
-            value={columnCount}
+            value={rowColCount}
           >
             <Option value="1">1</Option>
             <Option value="2">2</Option>
@@ -234,9 +158,10 @@ export default class ImageListEditor extends DesignEditor {
   static getInitialValue(settings, globalConfig) {
     return {
       selectType: 'select',
-      columnCount: "2",
+      rowColCount: "2",
       items: [],
-      ctype:6
+      contentType: contentType.CUSTOM,
+      ctype: 6
     };
   }
 

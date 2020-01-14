@@ -1,9 +1,43 @@
 .rc-design-component-swiper-editor {
+  .add-image-card-container {
+    display: block;
+    margin-bottom: 20px;
+    .add-image-card {
+      margin-bottom: 10px;
+      display: flex;
 
+      .add-goods-wrapper {
+        display: inline-block;
+      }
+
+      .update-panel {
+        margin:0 5px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .update-relation-wrapper {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .zent-select {
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 
 .rc-design-component-swiper-preview {
   min-height: 160px;
+  .no_data{
+    width: 100%;
+    line-height: 160px;
+    height: 100%;
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+  }
   .swiper-img{
     height: 160px;
     width: 100%;

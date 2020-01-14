@@ -66,7 +66,7 @@ module.exports = {
     inline: true,
     proxy: {
       '/cms': {
-        target: 'https://cs.tenfen.com',
+        target: 'http://localhost:8081',//https://cs.tenfenbook.com
         changeOrigin: true
       }
     }

@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {Upload, Tabs, Input, Button, Icon} from "zent"
 import PropTypes from 'prop-types'
 import "./ImageSelector.less"
-import {request, api} from '@/utils/utils'
+import {request, api,mediaUrlFormat} from '@/utils/utils'
 import {cloneDeep} from 'lodash'
 
 const {TabPanel} = Tabs;
@@ -115,7 +115,7 @@ export default class ImageSelector extends PureComponent {
         <Upload
           className='zent-upload-demo-pic'
           maxSize={3 * 1024 * 1024}
-          maxAmount={2}
+          maxAmount={10}
           triggerInline
           categoryList={categoryList}
           onFetch={this.fetchNetworkImage.bind(this)}

@@ -42,11 +42,12 @@ export function parseToTemplate(template) {
 function templateToComponents(template) {
   let components = [];
   for (let area of template.items) {
-    let component = getComponent(area);
-    console.log(area)
-    console.log(component)
-    console.log("-----------")
-    if (component && component.parameter.type) components.push(component.parameter);
+    try {
+      let component = getComponent(area);
+      if (component && component.parameter.type) components.push(component.parameter);
+    } catch (e) {
+      console.log(e)
+    }
   }
   return {
     ...template,
@@ -55,6 +56,7 @@ function templateToComponents(template) {
 }
 
 function getComponent(area) {
+  console.log(area.ctype,componentsConfig[area.ctype])
   let config = componentsConfig[area.ctype];
   if (config && config.toComponent) {
     config = {...area, ...config, ...config.toComponent(area)}

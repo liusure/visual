@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import Design from "@zent/design"
 import {Consumer} from "../index/index"
-import {request, api} from '@/utils/utils'
+import {request, api,mediaUrlFormat} from '@/utils/utils'
 import {formatter, parseToTemplate} from '@/utils/conponentsFormatter'
 import {
   SearchEditor,
@@ -25,7 +25,15 @@ import {
   GoodsScrollEditor,
   GoodsScrollPreview,
   ActivityEditor,
-  ActivityPreview
+  ActivityPreview,
+  NavigationEditor,
+  NavigationPreview,
+  FlashSaleEditor,
+  FlashSalePreview,
+  GuessYouLikeEditor,
+  GuessYouLikePreview,
+  GoodsMessageEditor,
+  GoodsMessagePreview,
 } from "../components"
 import {Button, Dialog, Input} from "zent"
 import '@zent/design/css/index.css';
@@ -33,6 +41,22 @@ import '@zent/design/css/components.css';
 import "./designer.less";
 
 const components = [{
+  type: "guess-like",
+  // 渲染预览部分的组件
+  preview: GuessYouLikePreview,
+  // 渲染编辑部分的组件
+  editor: GuessYouLikeEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+},{
   type: "search",
   // 渲染预览部分的组件
   preview: SearchPreview,
@@ -66,11 +90,59 @@ const components = [{
   previewProps: () => {
   },
 }, {
+  type: "flash-sale",
+  // 渲染预览部分的组件
+  preview: FlashSalePreview,
+  // 渲染编辑部分的组件
+  editor: FlashSaleEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "goods-message",
+  // 渲染预览部分的组件
+  preview: GoodsMessagePreview,
+  // 渲染编辑部分的组件
+  editor: GoodsMessageEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
   type: "swiper",
   // 渲染预览部分的组件
   preview: SwiperPreview,
   // 渲染编辑部分的组件
   editor: SwiperEditor,
+  appendable: true,
+  canDelete: true,
+  canInsert: true,
+  editable: true,
+  highlightWhenSelect: true,
+  dragable: true,
+  editorProps: () => {
+  },
+  previewProps: () => {
+  },
+}, {
+  type: "navigation",
+  // 渲染预览部分的组件
+  preview: NavigationPreview,
+  // 渲染编辑部分的组件
+  editor: NavigationEditor,
   appendable: true,
   canDelete: true,
   canInsert: true,
@@ -265,6 +337,7 @@ export default class IndexDesigner extends PureComponent {
       this.setState({
         showSaveDialog: false
       })
+      // window.location.href = window.location.href
     })
   }
 
@@ -275,11 +348,9 @@ export default class IndexDesigner extends PureComponent {
       <Design components={components}
               onChange={this.onChange.bind(this)}
               ref={this.saveDesign}
-              cache
-              cacheId="design-test"
-              confirmUnsavedLeave={false}
               value={value}
-              globalConfig={window._global}></Design>
+              globalConfig={window._global}
+              confirmUnsavedLeave={false}></Design>
       <Dialog className="save-template-dialog"
               visible={showSaveDialog}
               onClose={() => this.setState({showSaveDialog: false})}

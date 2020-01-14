@@ -9,7 +9,7 @@ class TemplateAreaItem {
     this.targetId = targetId;
     this.itemType = itemType;
     this.areaId = areaId;
-    this.linkUrl = linkUrl;
+    this.linkUrl = linkUrl||"";
     this.shopStoreId = shopStoreId;
     this.item = item;
   }

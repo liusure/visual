@@ -1,55 +1,89 @@
 import React from 'react';
-import {Dialog} from 'zent';
+import {Card, Dialog, Radio, Select} from 'zent';
 import {DesignEditor, ControlGroup} from '@zent/design/es/editor/DesignEditor';
 import EditorCard from '../../common/EditorCard';
-import ImageSelector from '../../common/ImageSelector';
-import {cloneDeep} from "lodash"
+import GoodsSelector from "@/components/common/GoodsSelector";
 import "./GoodsScroll.less"
+import AddIcon from '@/components/common/AddIcon';
+import {mediaUrlFormat} from "@/utils/utils";
+import {itemType} from "@/constants";
 
 export const PLACEHOLDER = '请选择商品';
+const RadioGroup = Radio.Group;
 const {openDialog, closeDialog} = Dialog;
+
+const default_img = "https://tenfen-video.oss-cn-beijing.aliyuncs.com/visual_default_background.webp";
 export default class GoodsScrollEditor extends DesignEditor {
 
-  onCardAddClick() {
-    let {value: {id, items}} = this.props;//这里的id是areaId
+  onGoodsAddClick() {
     openDialog({
-      dialogId: "chooseImages",
+      dialogId: "chooseGoods",
       parentComponent: this,
       children: (<div>
-        <ImageSelector areaId={id} onConfirm={this.onImagesConfirm.bind(this)} items={[...items]}></ImageSelector>
+        <GoodsSelector onConfirm={this.handleGoodsConfirm.bind(this)}></GoodsSelector>
       </div>),
+    })
+  }
+
+
+  onSelectType(e) {
+    let {value, value: {}, onChange} = this.props;
+    onChange && onChange({
+      ...value,
+      contentType: e.target.value
     });
   }
 
-  onImagesConfirm({items}) {
-    let {value, onChange} = this.props;
-    items.map((item) => ({
-      ...item
-    }))
+  handleGoodsConfirm({selectedRowKeys, selectedRows}) {
+    let {value, value: {id, items}, onChange} = this.props;
+    let itemsArr = [...items, ...selectedRows.map(item => ({
+      targetId: item.id,
+      itemType: itemType.ITEM_TYPE_GOODS,
+      areaId: id,
+      imageUrls: item.imageUrls,
+      name: item.name,
+      price: item.price
+    }))];
+    onChange && onChange({
+      ...value,
+      items: itemsArr
+    });
+    closeDialog('chooseGoods');
+  }
+
+  handleGoodsDelete(index) {
+    const {value, value: {rowColCount, items}, showError, validation, onChange} = this.props;
+    items.splice(index, 1);
     onChange && onChange({
       ...value,
       items
     });
-    closeDialog('chooseImages');
   }
 
   render() {
-    const {value, showError, validation} = this.props;
+    const {value, value: {items}, showError, validation} = this.props;
 
     return (
       <div className="rc-design-component-goods-scroll-editor">
-        <div className="rc-design-editor-component-title">轮播图片</div>
+        <div className="rc-design-editor-component-title">商品列表</div>
         <ControlGroup
-          label="图片:"
+          label="来源:"
           required
           showError={showError || this.getMetaProperty('content', 'touched')}
           error={validation.content}
-        ></ControlGroup>
-        <EditorCard
-          onCardClick={this.onCardAddClick.bind(this)}>
-          <p>添加图片</p>
-          <p>建议宽度600px</p>
-        </EditorCard>
+        >
+          <RadioGroup onChange={this.onSelectType.bind(this)} value={value.contentType + ""}>
+            <Radio value="0">自选</Radio>
+            <Radio value="1" disabled>继承容器</Radio>
+            {/*<Radio value="2">专题</Radio>*/}
+          </RadioGroup>
+        </ControlGroup>
+        {
+          items.map((item, index) => <AddIcon onDelete={this.handleGoodsDelete.bind(this, index)}
+                                              src={item.imageUrls && mediaUrlFormat(item.imageUrls[0]) || default_img}
+                                              onClick={this.onGoodsAddClick.bind(this)}/>)
+        }
+        <AddIcon onClick={this.onGoodsAddClick.bind(this)}/>
       </div>
     );
   }
@@ -60,7 +94,8 @@ export default class GoodsScrollEditor extends DesignEditor {
   static getInitialValue(settings, globalConfig) {
     return {
       items: [],
-      ctype: 27
+      ctype: 28,
+      contentType: "0"//列表内容是自选（0）还是继承容器（1）
     };
   }
 
