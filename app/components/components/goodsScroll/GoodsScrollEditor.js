@@ -8,7 +8,7 @@ import AddIcon from '@/components/common/AddIcon';
 import {mediaUrlFormat} from "@/utils/utils";
 import {itemType} from "@/constants";
 
-export const PLACEHOLDER = '请选择商品';
+export const PLACEHOLDER = '请选择拼团商品';
 const RadioGroup = Radio.Group;
 const {openDialog, closeDialog} = Dialog;
 
@@ -42,7 +42,7 @@ export default class GoodsScrollEditor extends DesignEditor {
       areaId: id,
       imageUrls: item.imageUrls,
       name: item.name,
-      price: item.price
+      groupPrice: item.groupPrice
     }))];
     onChange && onChange({
       ...value,
@@ -58,6 +58,7 @@ export default class GoodsScrollEditor extends DesignEditor {
       ...value,
       items
     });
+    console.log(items);
   }
 
   render() {

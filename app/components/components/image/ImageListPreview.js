@@ -27,11 +27,6 @@ export default class ImageListPreview extends PureComponent {
           {items.map((item, index) => (
             <li key={index} className={`image-layout-wrapper  col-count-${rowColCount}`}>
               <img className={`image`} src={item.url}></img>
-              <div className="tip">
-                {
-                  item.itemType?`绑定到${ITEM_TYPES[item.itemType]}-${(item.itemType===4?item.linkUrl:item.item&&item.item.name)||''}`:null
-                }
-              </div>
             </li>)) || PLACEHOLDER}
         </ul>
       </div>

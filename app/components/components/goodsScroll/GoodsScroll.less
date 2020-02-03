@@ -3,17 +3,34 @@
 }
 
 .rc-design-component-goods-scroll-preview {
-  min-height: 160px;
+  min-height: 120px;
   .no_data{
     width: 100%;
-    line-height: 160px;
+    line-height: 120px;
     height: 100%;
     text-align: center;
     color: #666;
     font-size: 18px;
   }
-  .goods-scroll-img{
-    height: 160px;
+  .goods-scroll-image-wrapper-a{
+    background-color: #FFF;
     width: 100%;
+    display: flex;
+    .goods-scroll-image-wrapper{
+      flex: 0 0 120px;
+      padding: 10px;
+      .goods-scroll-image{
+        height: 100px;
+        width: 100px;
+        background-size: contain;
+      }
+    }
+    .goods-scroll-info{
+      flex: 1 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+    }
   }
 }

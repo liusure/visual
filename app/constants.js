@@ -89,7 +89,8 @@ let componentsConfig = {
       return data.items.map(item => {
         return {
           ...item,
-          resourcePic: item.url
+          resourceUrl: item.url,
+          resourcePic: item.url,
         }
       })
     }
@@ -343,7 +344,7 @@ let componentsConfig = {
       return data.items.map(item => {
         return {
           ...item,
-          resourcePic: item.url
+          resourceUrl: item.url
         }
       })
     }
@@ -398,7 +399,7 @@ let componentsConfig = {
           return {
             ...item,
             imageUrls: item.item.imageUrls,
-            price: item.item.price,
+            groupPrice: item.item.groupPrice,
             goodsName: item.item.name
           }
         })
@@ -429,7 +430,7 @@ let componentsConfig = {
     }
   }
 }
-let mediaUrl = "http://csimage.tenfen.com/imagecms/"
+let mediaUrl = "http://image.tenfenbook.com/cms/"
 let itemType = {
   ITEM_TYPE_COLUMN: 0,
   ITEM_TYPE_GOODS: 1,

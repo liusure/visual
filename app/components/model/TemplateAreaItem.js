@@ -5,6 +5,7 @@ class TemplateAreaItem {
     this.imgIconUrl = imgIconUrl;
     this.iconUrl = iconUrl;
     this.resourcePic = resourcePic;
+    this.resourceUrl = resourcePic;
     this.orderId = orderId;
     this.targetId = targetId;
     this.itemType = itemType;

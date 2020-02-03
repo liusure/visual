@@ -66,8 +66,12 @@ module.exports = {
     inline: true,
     proxy: {
       '/cms': {
-        target: 'http://localhost:8081',//https://cs.tenfenbook.com
-        changeOrigin: true
+        target: 'https://manage.tenfenbook.com',//https://cs.tenfenbook.com|http://localhost:8081
+        changeOrigin: true,
+        secure: true,
+        onProxyReq(proxyReq, req, res) {
+          // proxyReq.setHeader('Cookie', 'JSESSIONID=36302FB9883541F25A2561A83B474A6C');
+        }
       }
     }
   },

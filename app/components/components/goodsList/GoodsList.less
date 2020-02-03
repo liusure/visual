@@ -1,4 +1,4 @@
-@GOODS_CONTAINER_HEIGHT: 190px;
+@GOODS_CONTAINER_HEIGHT: 220px;
 .rc-design-component-goods-list-editor {
   .add-goods-card {
     margin-bottom: 10px;
@@ -11,32 +11,29 @@
   .goods-layout-container {
     display: block;
     list-style: none;
-    padding: 0 5px;
     box-sizing: border-box;
-
     .goods-layout-wrapper {
       //float: left;
       display: inline-block;
       width: 50%;
       height: @GOODS_CONTAINER_HEIGHT;
       box-sizing: border-box;
-
       a.goods-image-wrapper-a {
         box-sizing: border-box;
         border: 1px solid #ddd;
         display: inline-block;
         width: 100%;
-        margin: 5px;
-
+        height: 100%;
         .goods-image-wrapper {
-          height: 120px;
+          height: 150px;
           background-color: #FFF;
 
           .goods-image {
             margin: 0 auto;
             width: 100%;
             height: 150px;
-            background-size: cover;
+            background-size: contain;
+            background-position: 50% 50%;
           }
         }
 
@@ -48,6 +45,9 @@
           box-sizing: border-box;
 
           .goods-title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
           .goods-detail {

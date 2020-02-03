@@ -33,7 +33,7 @@ let api = disposeUrl({
   getColumn: {
     url: "/ec/template/ajax/getColumn"
   }
-}, "https://manage.tenfenbook.com/cms")//https://cs.tenfenbook.com/cms
+}, "https://manage.tenfenbook.com/cms")//https://cs.tenfenbook.com/cms|https://manage.tenfenbook.com/cms|http://localhost:8082/cms
 
 function disposeUrl(obj, prefix) {
   Object.keys(obj).forEach(v => {
